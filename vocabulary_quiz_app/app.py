@@ -35,7 +35,7 @@ class VocabularyQuizApp:
         self.feedback_var = tk.StringVar(value="")
         self.score_var    = tk.StringVar(value="Score: 0/0")
         self.accuracy_var = tk.StringVar(value="정답률: 0.0%")
-        self.timer_var    = tk.StringVar(value=f"⏱ {TIME_LIMIT}초")
+        self.timer_var    = tk.StringVar(value=f"{TIME_LIMIT}초")
 
         ttk.Label(root, text="영단어").pack(pady=(16, 2))
         ttk.Label(root, textvariable=self.word_var, font=("NanumGothic", 24)).pack()
@@ -88,7 +88,7 @@ class VocabularyQuizApp:
             self._timer_id = self.root.after(1000, self._tick)
 
     def _update_timer_display(self) -> None:
-        self.timer_var.set(f"⏱ {self.time_left}초")
+        self.timer_var.set(f"{self.time_left}초")
         if self.time_left <= 3:
             self.timer_label.configure(foreground="red")
         elif self.time_left <= 6:
@@ -102,7 +102,7 @@ class VocabularyQuizApp:
         self.checked = True
         self.total += 1
         self.incorrect_words.append((self.current.term, self.current.meaning))
-        self.feedback_var.set(f"⏰ 시간 초과! 정답: {self.current.meaning}")
+        self.feedback_var.set(f" 시간 초과! 정답: {self.current.meaning}")
         self._refresh_stats()
         self.check_button.state(["disabled"])
 
@@ -119,9 +119,9 @@ class VocabularyQuizApp:
 
         if check_answer(self.current, user_input):
             self.score += 1
-            self.feedback_var.set("✅ 정답입니다!")
+            self.feedback_var.set(" 정답입니다!")
         else:
-            self.feedback_var.set(f"❌ 오답입니다. 정답: {self.current.meaning}")
+            self.feedback_var.set(f" 오답입니다. 정답: {self.current.meaning}")
             self.incorrect_words.append((self.current.term, self.current.meaning))
 
         self._refresh_stats()
