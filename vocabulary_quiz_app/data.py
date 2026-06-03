@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from vocabulary_quiz_app.quiz_logic import Word
+from quiz_logic import Word
 
 WORDS: list[Word] = [
     Word(term="apple", meaning="사과"),

@@ -22,5 +22,6 @@ def check_answer(word: Word, user_input: str) -> bool:
 def draw_word(words: list[Word], rng: random.Random | None = None) -> Word:
     if not words:
         raise ValueError("Word list is empty")
+
     chooser = rng if rng is not None else random
     return chooser.choice(words)
